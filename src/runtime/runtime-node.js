@@ -1,24 +1,23 @@
-define(function (require, exports) {
-
+define(function (require) {
+	var utility = require('../utility/utility')
 	var Node = require('../tree/node')
 
 	var RuntimeNode = function () {
-		Node()
-		this._name = ''
-		this._type = '' // 'scope' or 'var'
+		this._beRefered = [] // be reference
+
+		// default: no any info
+		// judge: can judge from else node
+		// new: be judged already
+		this._state = 'default' // default, judge, new
 	}
 
-	RuntimeNode.prototype = new Node
+	utility.extend(RuntimeNode.prototype, Node.prototype)
 
-	RuntimeNode.prototype.findScope = function (name) {
-		return null
+
+	/** get the type, main function */
+	RuntimeNode.prototype.getType = function () {
+		throw 'no implemented'
 	}
 
-	RuntimeNode.prototype.findVar = function (name) {
-		return null
-	}
-
-	RuntimeNode.prototype.findVarAccordly = function (name) {
-		// return no exist or a node
-	}
+	return RuntimeNode
 })
