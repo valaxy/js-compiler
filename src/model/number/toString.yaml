@@ -1,0 +1,18 @@
+_schema: javascript.function
+name: toString
+returnType:
+  _schema: ref
+  value: javascript.string
+  hasUnlimitPara: no
+  paraList:
+    -
+      _schema: javascript.commonPara
+      name: radix
+      type:
+        _schema: ref
+        value: javascript.number
+      optional: false
+      description: ...
+      default:
+        _schema: javascript.number
+        value: 10
