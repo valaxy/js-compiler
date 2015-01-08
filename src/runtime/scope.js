@@ -29,7 +29,7 @@ define(function () {
 		this._vars[name] = localVar
 	}
 
-	Scope.prototype.getVar = function (name) {
+	Scope.prototype.findVar = function (name) {
 		if (name in this._vars) {
 			return this._vars[name]
 		} else {
@@ -39,7 +39,7 @@ define(function () {
 
 
 	Scope.prototype.findLocalNameVar = function (localName) {
-		var _var = this.getVar(localName)
+		var _var = this.findVar(localName)
 		if (_var !== null) {
 			return _var
 		}
@@ -54,7 +54,7 @@ define(function () {
 	Scope.prototype.findFullNameVar = function (fullName) {
 		var dot = fullName.indexOf('.')
 		if (dot < 0) {
-			return this.getVar(fullName)
+			return this.findVar(fullName)
 		}
 
 		var subScope = this._scopes[fullName.slice(0, dot)]
@@ -93,9 +93,9 @@ define(function () {
 			scope.addVar('abc', abc)
 			scope.addVar('def', def)
 			scope.addVar('abc', abc2)
-			assert.equal(scope.getVar('abc'), abc2)
-			assert.equal(scope.getVar('def'), def)
-			assert.deepEqual(scope.getVar('ghi'), null)
+			assert.equal(scope.findVar('abc'), abc2)
+			assert.equal(scope.findVar('def'), def)
+			assert.deepEqual(scope.findVar('ghi'), null)
 		})
 
 		QUnit.test('findLocalNameVar()', function (assert) {
