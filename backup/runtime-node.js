@@ -1,6 +1,6 @@
 define(function (require) {
-	var utility = require('../utility/utility')
-	var Node = require('../tree/node')
+	var utility = require('../src/utility/utility')
+	var Node = require('../src/tree/node')
 
 	var RuntimeNode = function () {
 		this._beRefered = [] // be reference
@@ -18,6 +18,7 @@ define(function (require) {
 	RuntimeNode.prototype.getType = function () {
 		throw 'no implemented'
 	}
+
 
 	return RuntimeNode
 })
