@@ -10,10 +10,10 @@ define(function () {
 		return new Scope
 	}
 
- 
+
 	Scope.prototype.addScope = function (name, scope) {
 		this._scopes[name] = scope
-		scope._parentScopre = this
+		scope._parentScope = this
 	}
 
 	Scope.prototype.getScope = function (name) {
@@ -21,7 +21,7 @@ define(function () {
 	}
 
 	Scope.prototype.parentScope = function () {
-		return this._parentScopre
+		return this._parentScope
 	}
 
 
